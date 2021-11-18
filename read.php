@@ -17,7 +17,7 @@ if (isset($_POST['type'])) {
     }
 
     if ($_POST['type']=="edit") {
-        $id=filter_var($_POST['id'], FILTER_SANITIZE_NUMBER_INT);;
+        $id=filter_var($_POST['id'], FILTER_SANITIZE_NUMBER_INT);
         $name=filter_var($_POST['name'], FILTER_SANITIZE_STRING);
         $difficulty=filter_var($_POST['difficulty'], FILTER_SANITIZE_STRING);
         $distance=filter_var($_POST['distance'], FILTER_SANITIZE_NUMBER_FLOAT);
