@@ -5,11 +5,11 @@ include 'db_connection.php';
 
 if (isset($_POST['type'])) {
     if ($_POST['type']=="add") {
-        $name=$_POST['name'];
-        $difficulty=$_POST['difficulty'];
-        $distance=$_POST['distance'];
-        $duration=$_POST['duration'];
-        $height_difference=$_POST['height_difference'];
+        $name=filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+        $difficulty=filter_var($_POST['difficulty'], FILTER_SANITIZE_STRING);
+        $distance=filter_var($_POST['distance'], FILTER_SANITIZE_NUMBER_FLOAT);
+        $duration=filter_var($_POST['duration'], FILTER_SANITIZE_NUMBER_FLOAT);
+        $height_difference=filter_var($_POST['height_difference'], FILTER_SANITIZE_NUMBER_FLOAT);
 
         $sql = "INSERT INTO hiking (name, difficulty, distance, duration, height_difference) VALUES
                 ('$name', '$difficulty', '$distance', '$duration', '$height_difference')";
@@ -17,12 +17,12 @@ if (isset($_POST['type'])) {
     }
 
     if ($_POST['type']=="edit") {
-        $id=$_POST['id'];
-        $name=$_POST['name'];
-        $difficulty=$_POST['difficulty'];
-        $distance=$_POST['distance'];
-        $duration=$_POST['duration'];
-        $height_difference=$_POST['height_difference'];
+        $id=filter_var($_POST['id'], FILTER_SANITIZE_NUMBER_INT);;
+        $name=filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+        $difficulty=filter_var($_POST['difficulty'], FILTER_SANITIZE_STRING);
+        $distance=filter_var($_POST['distance'], FILTER_SANITIZE_NUMBER_FLOAT);
+        $duration=filter_var($_POST['duration'], FILTER_SANITIZE_NUMBER_FLOAT);
+        $height_difference=filter_var($_POST['height_difference'], FILTER_SANITIZE_NUMBER_FLOAT);
 
         $sql = "UPDATE hiking SET name='$name', difficulty='$difficulty', distance='$distance', duration='$duration',
                   height_difference='$height_difference' WHERE id='$id'";
